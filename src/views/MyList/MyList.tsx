@@ -17,19 +17,13 @@ export const MyList = () => {
       </header>
 
       <h1>Favorite list</h1>
-      {!!state.savedList.length && (
-        <section className={styles.results}>
-          <ArtistList
-            artistsList={state.savedList}
-            renderName={(_: IArtist, element: JSX.Element) => (
-              <span>{element}</span>
-            )}
-          />
-        </section>
-      )}
-
-      <section>
-        {!state.savedList.length && <h2>No Artists in list</h2>}
+      <section className={styles.results}>
+        <ArtistList
+          artistsList={state.savedList}
+          renderName={(_: IArtist, element: JSX.Element) => (
+            <span>{element}</span>
+          )}
+        />
       </section>
     </article>
   );

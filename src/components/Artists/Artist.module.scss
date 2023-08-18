@@ -1,3 +1,5 @@
+@import '../../scss/mixins';
+
 .artist {
   display: grid;
   grid-template-columns: 1fr 3fr 1fr;
@@ -14,25 +16,16 @@
   & > img {
     width: 10rem;
     max-width: 70%;
-    // height: 50%;
     box-shadow: 0.2rem 0.2rem 0.6rem rgba(#000, 0.05);
     border-radius: 5px;
     justify-self: center;
   }
 
   & button {
-    justify-self: center;
     height: 5rem;
     width: 12rem;
-    font-size: 2rem;
-    border: 1px solid #ddd;
-    cursor: pointer;
-    box-shadow: 0.2rem 0.2rem 0.6rem rgba(#000, 0.05);
-    transition: background-color 0.5s;
 
-    &:hover {
-      background-color: #ffe8e8;
-    }
+    @include button($font-size: 2rem);
   }
 
   & > .details {
@@ -52,4 +45,8 @@
       font-weight: normal;
     }
   }
+}
+
+.img{
+  height: 8rem;
 }

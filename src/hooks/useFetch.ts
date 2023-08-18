@@ -20,54 +20,61 @@ interface UseFetch {
  * but because of the many cases performing requests in this app I decided to go over with
  * this own implementation
  */
+
+const ERROR_MESSAGE =
+  "There was an error while processing this request, please try again";
+
 export const useFetch = (autoMountUrL?: string): UseFetch => {
   const [results, setResults] = useState([]) as any[];
   const [isLoading, setIsloading] = useState(false);
-  const [error, setError] = useState("");
+const [error, setError] = useState("");
 
   const doFetch = useCallback(
     async (separatedUrl?: string, headers: object = authorization) => {
       if (isLoading) return;
-  
+
       setIsloading(true);
       try {
         const definedUrL = autoMountUrL ?? separatedUrl;
         if (!definedUrL) return;
-  
+
         const response = await fetch(definedUrL, {
           headers: {
             ...authorization,
             ...headers,
           },
         });
-  
+
         if (!response.ok) {
-          setError(
-            "There was an error while processing this request, please try again"
-          );
+          setError(ERROR_MESSAGE);
           return;
-        } 
+        }
 
         const result = await response.json();
+
+        if (result.errors?.length) {
+          setError(ERROR_MESSAGE);
+          return;
+        }
+
         setResults(result?.data);
-        
+        setError("");
+
         return result;
       } catch (error) {
-        setError(
-          "There was an error while processing this request, please try again"
-        );
+        setError(ERROR_MESSAGE);
       } finally {
         setIsloading(false);
       }
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    [autoMountUrL]
+    []
   );
 
   useEffect(() => {
     if (!autoMountUrL) return;
     doFetch(autoMountUrL);
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return { doFetch, results, isLoading, error, setResults, setError };

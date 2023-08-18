@@ -1,10 +1,25 @@
-@import '../../scss/placeholders';
+@import "../../scss/mixins";
+@import "../../scss/placehoders";
 
 .genreview {
-  margin-block-start: 3rem;
-  font-size: 1.6rem;
-  height: 90vh;
-  position: relative;
+  @extend %viewLayout;
+
+  & > .results {
+    @include results(80vh);
+    @include scrollbar(#ddd);
+  }
+
+  & > .genreslist {
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    position: absolute;
+    width: 18rem;
+    height: 25rem;
+    top: 9.5%;
+    overflow-y: auto;
+
+    @include scrollbar(#ddd);
+  }
 
   & > .search {
     margin-block-start: 1rem;
@@ -37,18 +52,6 @@
     }
   }
 
-  & > .genreslist {
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    position: absolute;
-    width: 18rem;
-    height: 25rem;
-    top: 9.5%;
-    overflow-y: auto;
-
-    @include scrollbar(#ddd);
-  }
-
   & ul {
     list-style: none;
     & li > button {
@@ -67,17 +70,5 @@
         background-color: #ddd;
       }
     }
-  }
-
-  & > .results {
-    margin-inline: 2rem;
-    margin-block: auto;
-    height: 80vh;
-    overflow-y: auto;
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    align-items: center;
-    @include scrollbar(#ddd);
   }
 }

@@ -1,0 +1,42 @@
+@mixin scrollbar($background) {
+  &::-webkit-scrollbar {
+    width: 5px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: $background;
+    position: absolute;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: #888;
+  }
+}
+
+@mixin button($font-size) {
+  justify-self: center;
+  font-size: $font-size;
+  border: 1px solid #ddd;
+  cursor: pointer;
+  box-shadow: 0.2rem 0.2rem 0.6rem rgba(#000, 0.05);
+  transition: background-color 0.5s;
+
+  &:hover {
+    background-color: #ffe8e8;
+    color: #000;
+  }
+}
+
+@mixin results($height) {
+  padding-block: 2rem;
+  outline: 1px solid #ddd;
+  border-radius: 5px;
+  margin-block: auto;
+  height: $height;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: center;
+  @include scrollbar(#ddd);
+}

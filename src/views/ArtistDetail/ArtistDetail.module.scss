@@ -1,21 +1,17 @@
-@import "../../scss/placeholders";
+@import "../../scss/mixins";
+@import "../../scss/placehoders";
 
 .artistdetail {
-  margin-block-start: 3rem;
-  font-size: 1.6rem;
-  height: 90vh;
-  position: relative;
+  @extend %viewLayout;
 
   & > .similar {
-    margin-inline: 2rem;
-    margin-block: auto;
-    height: 50vh;
-    overflow-y: scroll;
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    align-items: center;
+    @include results(50vh);
     @include scrollbar(#ddd);
+
+    & > header {
+      position: absolute;
+      left: 1%;
+    }
   }
 
   & > .detailed {

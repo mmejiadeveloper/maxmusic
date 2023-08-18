@@ -85,7 +85,8 @@ export const GenreView = () => {
       )}
 
       <section>
-        {!isLoading &&
+        {!error &&
+          !isLoading &&
           displaying === "genres" &&
           !results.length &&
           search.length >= 3 && (
@@ -95,18 +96,20 @@ export const GenreView = () => {
         {error && <h3>{error}</h3>}
       </section>
 
-      <section className={styles.results}>
-        {!isLoading && displaying === "artists" && results.length > 0 && (
-          <ArtistList
-            artistsList={results}
-            renderName={(artist: IArtist, element: JSX.Element) => (
-              <Link to={`artist/${artist.id}?s=${search}&genreid=${genreId}`}>
-                {element}
-              </Link>
-            )}
-          />
-        )}
-      </section>
+      {!error && (
+        <section className={styles.results}>
+          {!isLoading && displaying === "artists" && (
+            <ArtistList
+              artistsList={results}
+              renderName={(artist: IArtist, element: JSX.Element) => (
+                <Link to={`artist/${artist.id}?s=${search}&genreid=${genreId}`}>
+                  {element}
+                </Link>
+              )}
+            />
+          )}
+        </section>
+      )}
     </article>
   );
 };

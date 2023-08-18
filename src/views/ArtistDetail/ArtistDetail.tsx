@@ -13,7 +13,7 @@ export const ArtistDetail = () => {
   const { id } = useParams();
   const [searchParams] = useSearchParams();
 
-  const { doFetch } = useFetch();
+  const { doFetch, error } = useFetch();
 
   const [artist, setArtist] = useState<IArtist | undefined>();
   const [similar, setSimilar] = useState<IArtist[]>([]);
@@ -29,6 +29,7 @@ export const ArtistDetail = () => {
           doFetch(`${apiMusicUrl}/artists/${id}`),
           doFetch(`${apiMusicUrl}/artists/${id}/similar`),
         ]);
+
         setArtist(artistResponse?.data[0]);
         setSimilar(similarResponse?.data);
       } catch (error) {
@@ -75,7 +76,7 @@ export const ArtistDetail = () => {
     </>
   );
 
-  if (errorFound)
+  if (errorFound || !!error)
     return <h1>There was an error loading the page, try again.</h1>;
 
   return (

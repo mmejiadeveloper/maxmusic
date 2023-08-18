@@ -1,25 +1,17 @@
-@import "../../scss/placeholders";
+@import "../../scss/mixins";
+@import "../../scss/placehoders";
 
 .mylist {
+  @extend %viewLayout;
+  
   & > h1 {
     text-align: center;
     margin-block: 3rem;
   }
 
-  margin-block-start: 3rem;
-  font-size: 1.6rem;
-  height: 90vh;
-  position: relative;
-
   & > .results {
-    margin-inline: 2rem;
-    margin-block: auto;
-    height: calc(75vh - 3rem);
-    overflow-y: auto;
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    align-items: center;
+
+    @include results(calc(75vh - 3rem));
     @include scrollbar(#ddd);
   }
 }

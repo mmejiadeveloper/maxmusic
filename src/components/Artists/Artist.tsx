@@ -39,6 +39,7 @@ const ArtistBase = ({ artist, children, renderName }: ArtistBaseProps) => {
 
   return (
     <>
+      {/* there are interesting ways to handle async load images, didnt want to focus a lot on things honestly */}
       <img src={image} alt="" />
       <section className={styles.details}>
         {renderName(<h2>{name}</h2>)}
@@ -54,6 +55,8 @@ const ArtistBase = ({ artist, children, renderName }: ArtistBaseProps) => {
 export const Artist = ({ children }: ArtistProps) => (
   <article className={styles.artist}>{children}</article>
 );
+
+export default Artist;
 
 ArtistBase.BaseGenre = ArtistBaseGenre;
 ArtistBase.ExpandedGenre = ArtistExpandedGenre;

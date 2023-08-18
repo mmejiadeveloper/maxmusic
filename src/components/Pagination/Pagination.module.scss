@@ -1,0 +1,48 @@
+@import "../../scss/mixins";
+
+.pagination {
+  position: absolute;
+  left: 75%;
+  background-color: #ddd;
+  padding-inline: 2rem;
+  padding-block: 1rem;
+  border-radius: 5px;
+  & > section {
+    display: flex;
+    gap: 7px;
+
+    flex-wrap: wrap;
+    width: 21rem;
+
+    & > button {
+      padding-inline: 0.8rem;
+      padding-block: 0.5rem;
+      border-radius: 5px;
+
+      @include button($font-size: 1.4rem);
+    }
+
+    & .selectedPage {
+      background-color: rgb(185, 54, 54);
+      color: white;
+      font-weight: bolder;
+    }
+  }
+
+  & > header {
+    margin-block-end: 1rem;
+    text-align: start;
+
+    & > select {
+      font-size: 1.8rem;
+      width: 100%;
+      // margin-block: auto;
+      border: 1px solid #ddd;
+      box-shadow: 0.2rem 0.2rem 0.6rem rgba(#000, 0.05);
+      text-align: center;
+      &:is(:focus, :active){
+        outline: 1px solid #c3c2c2;
+      }
+    }
+  }
+}

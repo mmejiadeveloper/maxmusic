@@ -1,3 +1,3 @@
-// This is required for SASS to ruin modules in typescript
+// This is required for SASS to run modules in typescript
 declare module "*.module.css";
 declare module "*.module.scss";
