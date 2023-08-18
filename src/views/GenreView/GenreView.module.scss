@@ -1,0 +1,83 @@
+@import '../../scss/placeholders';
+
+.genreview {
+  margin-block-start: 3rem;
+  font-size: 1.6rem;
+  height: 90vh;
+  position: relative;
+
+  & > .search {
+    margin-block-start: 1rem;
+    margin-block-end: 2rem;
+
+    & > strong {
+      margin-inline-start: 2rem;
+    }
+
+    & > input {
+      padding-inline: 0.4rem;
+      padding-block: 0.5rem;
+      font-size: 1.6rem;
+      border: 1px solid #ddd;
+      background-color: #f1f0f0;
+      border-radius: 0.3rem;
+
+      &:focus {
+        outline: 1px solid #bcbcbc;
+      }
+    }
+  }
+
+  & > header {
+    display: flex;
+    justify-content: space-between;
+
+    & > a {
+      order: 2;
+    }
+  }
+
+  & > .genreslist {
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    position: absolute;
+    width: 18rem;
+    height: 25rem;
+    top: 9.5%;
+    overflow-y: auto;
+
+    @include scrollbar(#ddd);
+  }
+
+  & ul {
+    list-style: none;
+    & li > button {
+      padding-inline: 0.4rem;
+      padding-block: 0.5rem;
+      text-align: start;
+    }
+    & button {
+      width: 100%;
+      border: none;
+      border-block-end: 1px solid #ddd;
+      cursor: pointer;
+      padding-block: 0.5rem;
+
+      &:is(:hover) {
+        background-color: #ddd;
+      }
+    }
+  }
+
+  & > .results {
+    margin-inline: 2rem;
+    margin-block: auto;
+    height: 80vh;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+    @include scrollbar(#ddd);
+  }
+}

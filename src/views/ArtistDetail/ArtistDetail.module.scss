@@ -1,0 +1,26 @@
+@import "../../scss/placeholders";
+
+.artistdetail {
+  margin-block-start: 3rem;
+  font-size: 1.6rem;
+  height: 90vh;
+  position: relative;
+
+  & > .similar {
+    margin-inline: 2rem;
+    margin-block: auto;
+    height: 50vh;
+    overflow-y: scroll;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+    @include scrollbar(#ddd);
+  }
+
+  & > .detailed {
+    display: flex;
+    justify-content: center;
+    margin-block: 5rem;
+  }
+}

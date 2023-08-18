@@ -1,0 +1,14 @@
+@mixin scrollbar($background) {
+  &::-webkit-scrollbar {
+    width: 5px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: $background;
+    position: absolute;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: #888;
+  }
+}

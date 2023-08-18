@@ -1,0 +1,55 @@
+.artist {
+  display: grid;
+  grid-template-columns: 1fr 3fr 1fr;
+  column-gap: 12px;
+  width: 70rem;
+  background-color: #ddd;
+  padding-inline: 2rem;
+  padding-block: 2rem;
+  border-radius: 5px;
+
+  align-items: center;
+  row-gap: 20px;
+
+  & > img {
+    width: 10rem;
+    max-width: 70%;
+    // height: 50%;
+    box-shadow: 0.2rem 0.2rem 0.6rem rgba(#000, 0.05);
+    border-radius: 5px;
+    justify-self: center;
+  }
+
+  & button {
+    justify-self: center;
+    height: 5rem;
+    width: 12rem;
+    font-size: 2rem;
+    border: 1px solid #ddd;
+    cursor: pointer;
+    box-shadow: 0.2rem 0.2rem 0.6rem rgba(#000, 0.05);
+    transition: background-color 0.5s;
+
+    &:hover {
+      background-color: #ffe8e8;
+    }
+  }
+
+  & > .details {
+    width: 100%;
+    & > a {
+      text-decoration: none;
+      color: #000;
+    }
+  }
+  & > .expandedgenres {
+    grid-column: 1 / -1;
+    & > strong {
+      display: block;
+    }
+
+    & > strong:nth-child(even) {
+      font-weight: normal;
+    }
+  }
+}

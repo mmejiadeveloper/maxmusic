@@ -1,0 +1,5 @@
+.expandedgenres {
+  & strong:nth-child(even) {
+    font-weight: normal;
+  }
+}
